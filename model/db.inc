@@ -1,4 +1,5 @@
 <?php
+	// Function for connecting to the database.
 	function connect() {
 		$user = admin_prayfj;
 		$password = mLg1nayP;
@@ -8,6 +9,7 @@
 		print "Database OK\n";
 	}
 
+	// Function for disconnecting from the database when we are finished.
 	function disconnect() {
 		mysql_close();
 	}

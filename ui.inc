@@ -1,4 +1,5 @@
 <?php
+
 	/**
 	 * Function for use in templates to display the 'header' of the page.
 	 */

@@ -14,18 +14,22 @@
 	 * Function for adding a row to the database table 'image'.
 	 */
 	 function insert($item) {
+		global $message; // Pass messages to the user
 		// Prepare the database query
 		$query = "INSERT INTO picture VALUES (
 			'', 
-			'" . $item['description'] . "', 
-			'john.jpg',
+			'" . $item['description'] . "' , 
+			'" . $item['filename'] . "',
 			now(),
 			'1'
 			)";
 		// Connect to the database
 		connect();
 		// Run the database query
-		mysql_query($query);	
+		$query_success = mysql_query($query);
+		
 		// Disconnect from the database
 		disconnect();
+		
+		return $query_success;
 	}

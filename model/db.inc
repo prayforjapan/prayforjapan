@@ -6,7 +6,7 @@
 		$database = admin_prayfj;
 		mysql_connect(localhost, $user, $password);
 		@mysql_select_db($database) or die("Unable to select database");
-		print "Database OK\n";
+		$message .= "Database OK\n";
 	}
 
 	// Function for disconnecting from the database when we are finished.

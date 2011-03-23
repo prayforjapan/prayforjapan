@@ -1,13 +1,20 @@
 <?php
+	/**
+	 * @file Controller code for add.php image upload form
+         */
+
 	// Include the model, database functions and stuff like that
 	include './model/db.inc';
+
 	// Include the model for the 'image' table in the database. insert(), update() etc. 
 	include './model/image.inc';
+
 	// Load reCAPTCHA library
 	require('./libs/recaptchalib.php');
-	$message = 'Messages to the user<br />'; // Pass any messages to the user
-	$submission = array(); // User submission
 
+	// Global variables 
+	$message = 'Messages to the user<br />';	 // Messages to display to the user
+	$submission = array();				 // User submission array to feed to the database
 	
 	/**
 	 * Figure out if we are receiving a 'post' form submission 
@@ -19,15 +26,25 @@
 	elseif($_SERVER['REQUEST_METHOD']=='GET')
 	{
 		// Do stuff like passing data from the model to the view	
-		$message .= 'Processing request<br />';
+		$message .= 'Processing a "get" request<br />';
 	}
 
+	/**
+	 * Process the form submitted by the user
+	 */
 	function process_form() 
 	{
 		global $message;
 		$message .= 'Checking CAPTCHA and uploaded file<br />';
-		$captcha_success = check_captcha(); // Captcha success?
+
+		// Check if submitted CAPTCHA is correct with the check_captcha() function
+		$captcha_success = check_captcha();
+
+		// Check if submitted file is valid with the check_file() function
 		$valid_file = check_file(); // Does the uploaded file pass our tests?
+
+		// If our checks are successful, try to store the submitted picture and text description 
+		// with store_submitted_file() and submit_form_to_database()
 		if($valid_file && $captcha_success){
 			$message .= 'Submitting form to database<br />';
 			store_submitted_file();

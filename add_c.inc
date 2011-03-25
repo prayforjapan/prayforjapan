@@ -1,15 +1,15 @@
 <?php
 	/**
 	 * @file Controller code for add.php image upload form
-     */
+	 */
 
-	include './model/db.inc'; 			// Include the model, database functions and stuff like that
-	include './model/image.inc';		// Include the model for the 'image' table in the database. insert(), update() etc. 
-	require('./libs/recaptchalib.php');	// Load reCAPTCHA library
+	include './model/db.inc';				// Include the model, database functions and stuff like that
+	include './model/image.inc';			// Include the model for the 'image' table in the database. insert(), update() etc. 
+	require('./libs/recaptchalib.php');		// Load reCAPTCHA library
 
 	// Global variables 
-	$message = '';	 					// Messages to display to the user
-	$submission = array();				// User submission array to feed to the database
+	$message = '';							// Messages to display to the user
+	$submission = array();					// User submission array to feed to the database
 	
 	
 	/**
@@ -36,6 +36,9 @@
 	{
 		// If our checks are successful, try to store the submitted picture in our ./files
 		// and store information about the file in the database.
+		// Instead of calling the functions inside the if statement, 
+		// store their values so we don't lose notifications by && 
+		// ignoring the second function if the first one has already returned FALSE
 		$check_captcha = check_captcha(); 	// Store success or failure of check_captcha();
 		$check_file = check_file(); 		// Store success or failure of check_file();
 		if($check_captcha && $check_file)   

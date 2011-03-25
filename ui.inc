@@ -26,3 +26,14 @@
 	</html>
 	<?php
 	}
+	
+	/** 
+	 * Function for adding reCAPTCHA to forms in templates
+	 */
+	function captchaform(){
+		// Set the reCAPTCHA public key
+		$publickey = "6LdKjsISAAAAAPGSU-_hiN9V5NPQHW77dmgoMXaG"; 
+
+		// Output the reCAPTCHA form
+		echo recaptcha_get_html($publickey);
+	}

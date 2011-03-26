@@ -6,6 +6,7 @@
 	include './model/db.inc';				// Include the model, database functions and stuff like that
 	include './model/image.inc';			// Include the model for the 'image' table in the database. insert(), update() etc. 
 	require('./libs/recaptchalib.php');		// Load reCAPTCHA library
+	include './libs/krumo/class.krumo.php';
 
 	// Global variables 
 	$message = '';							// Messages to display to the user
@@ -18,9 +19,11 @@
 	if($_SERVER['REQUEST_METHOD']=='POST') 
 	{
 		// If process_form() function is successful
-		if (process_form())
+		$query_id = process_form();
+		if ($query_id)
 		{
 			$message .= "Success, your file has been added  to the database<br />";
+			$message .= '<a href="/single.php?image=' . $submission['picture_id'] . '">View your submission</a>';
 		}
 		else
 		{
@@ -43,10 +46,11 @@
 		$check_file = check_file(); 		// Store success or failure of check_file();
 		if($check_captcha && $check_file)   
 		{
-			// first store_submitted_file() && if that is successful then submit_form_to_database()
-			if (store_submitted_file() && submit_form_to_database()) 
+			// first store_submitted_file(), then if that is successful then submit_form_to_database()
+			if (store_submitted_file()) 
 			{
-				return TRUE;
+				$query_id = submit_form_to_database();
+				return $query_id;
 			}
 		}
 		return FALSE;
@@ -129,19 +133,14 @@
 	function submit_form_to_database()
 	{
 		global $submission;
-	
+		global $message;
 		// Use php filter_var()  (hopefully preventing XSS, SQL injection, etc.)
 		$submission['description'] = filter_var($_POST["description"], FILTER_SANITIZE_SPECIAL_CHARS);
 			
 		// Add form fields to the database  
-		if(insert($submission))
-		{
-			// The database query insert($submission) was successful.
-			return TRUE;
-		}
-		else
-		{
-			$message .= "The database query failed.<br />";
-			return FALSE;
-		}
+		$query_id = insert($submission);
+		
+		$submission['picture_id'] = (string) $query_id;
+		
+		return $query_id;
 	}	

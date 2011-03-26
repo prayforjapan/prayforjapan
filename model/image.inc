@@ -26,12 +26,13 @@
 		// Connect to the database
 		connect();
 		// Run the database query
-		$query_success = mysql_query($query);
-		
+		mysql_query($query);
+		$query_row_id = mysql_insert_id();
 		// Disconnect from the database
 		disconnect();
 		
-		return $query_success;
+		// Returns inserted row ID if successful, or FALSE if the query failed. 
+		return $query_row_id;
 	}
 
 	/**
@@ -53,7 +54,6 @@
 		// Disconnect from the database
 		disconnect();
 		
-		krumo($result_array);
 		// Return the query result array
 		return $result_array;
 	}

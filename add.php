@@ -7,7 +7,7 @@
 	<form action="add.php" method="post" enctype="multipart/form-data">
 		<p><label for="file">Upload a picture </label>
 		<input type="file" name="file" id="file" /><br /> 
-		(jpeg image smaller than 2 megabytes)</p>
+		(jpeg, gif or png image smaller than 2 megabytes)</p>
 		<label for="description">Description: </label>
 		<input type="text" name="description" /><br />
 		<br />

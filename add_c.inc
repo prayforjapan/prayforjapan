@@ -22,12 +22,12 @@
 		$query_id = process_form();
 		if ($query_id)
 		{
-			$message .= "Success, your file has been added  to the database<br />";
+			$message .= "Success, your picture has been added  to the database<br /> You win.<br />";
 			$message .= '<a href="/single.php?image=' . $submission['picture_id'] . '">View your submission</a>';
 		}
 		else
 		{
-			$message .= "Fail. Your file couldn't be added to the database.<br />";
+			$message .= "You lose. <br />";
 		}
 	}
 
@@ -87,9 +87,30 @@
 	 */
 	function check_file(){
 		global $message;
+		global $submission;
+		
+		krumo(getimagesize($_FILES["file"]["tmp_name"]));
+		$image_info = getimagesize($_FILES["file"]["tmp_name"]);
+		$valid_image_type = TRUE;
+		switch($image_info['mime'])
+		{
+			case 'image/png':
+				$submission['file_extension'] = '.png';
+				break;
+			case 'image/gif':
+				$submission['file_extension'] = '.gif';
+				break;
+			case 'image/jpeg':
+				$submission['file_extension'] = '.jpg';
+			case 'image/pjpeg':
+				$submission['file_extension'] = '.jpg';
+			default:
+				$valid_image_type = FALSE;
+		}
+		
+		
 		// File should be gif, jpeg or progressive jpeg, smaller than 2mb
-		if ((($_FILES["file"]["type"] == "image/jpeg")
-		|| ($_FILES["file"]["type"] == "image/pjpeg"))
+		if (($valid_image_type)
 		&& ($_FILES["file"]["size"] < 2000000))
 		{
 			// Uploaded file meets the requirements
@@ -97,7 +118,7 @@
 		}
 		else
 		{
-			$message .= 'Uploaded file does not meet the requirements<br />';
+			$message .= 'You must submit a jpeg, gif or png image smaller than 2 megabytes<br />';
 			return FALSE;
 		}
 	} 
@@ -114,7 +135,7 @@
 		// Remove '/tmp/' from $tmp_file_name and append .jpg 
 		// (we can only deal with jpg files for now)
 		global $submission;
-		$submission["filename"] = substr($tmp_file_name, 5) . ".jpg";
+		$submission["filename"] = substr($tmp_file_name, 5) . $submission['file_extension'];
 		
 		// Don't overwrite existing files with the same name 
 		if (!file_exists("files" . $submission["filename"])){

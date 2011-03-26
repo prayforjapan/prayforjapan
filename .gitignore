@@ -1,3 +1,4 @@
 files/*
 libs/krumo
-
+*.swo
+*.swp

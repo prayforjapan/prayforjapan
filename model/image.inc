@@ -33,3 +33,27 @@
 		
 		return $query_success;
 	}
+
+	/**
+	 * Function for selecting a row from the db table 'image'.
+	 */
+	 function select_image($id) {
+		// Connect to the database
+		connect();
+
+		// Prepare the database query
+		$query = "SELECT * FROM picture WHERE picture_id = " . $id;
+
+		// Run the database query
+		$result_resource = mysql_query($query) or die("Query failed: " . mysql_error());
+
+		// Put the query result in to an array
+		$result_array = mysql_fetch_assoc($result_resource);
+	
+		// Disconnect from the database
+		disconnect();
+		
+		krumo($result_array);
+		// Return the query result array
+		return $result_array;
+	}

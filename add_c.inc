@@ -66,8 +66,8 @@
 		if($check_captcha && $check_file)   
 		{
 			// first store_submitted_file(), then if that is successful then submit_form_to_database()
-			if (store_submitted_file()) 	//OLDMAN: syntax newb again. Is if(store_submitted_file == true) implied automatically here? as in you dont need to code '==true' into it? 
-												//CHARLEY: This could be written as if(store_submitted_file() == TRUE).  
+			if (store_submitted_file() == TRUE) 	//OLDMAN: syntax newb again. Is if(store_submitted_file == true) implied automatically here? as in you dont need to code '==true' into it? 
+														//CHARLEY: This could be written as if(store_submitted_file() == TRUE).  
 			{
 				$query_id = submit_form_to_database();
 				return $query_id;
@@ -171,16 +171,16 @@
 		$submission["filename"] .= $submission['file_extension'];
 		
 		// Don't overwrite existing files with the same name 
-		if ( !file_exists("files" . $submission["filename"]) // if there is no file with that name already
-		&& move_uploaded_file($tmp_file_name, "files/" . $submission["filename"])) // then move_uploaded_file (&& skips the second test if the first one fails)
-			{
-				return TRUE;		//OLDMAN: to where? (probably being totallly thick about the syntax here!)
-			}
-			else
-			{
-				return FALSE;		//OLDMAN: to where? - is this meant to always return false, or does it need a condition? Is an else implied automatically? (probably being totallly thick about the syntax here!)
-										//CHARLEY: I have re-written it to make more sense. Originally if it didn't get to return TRUE then it carried on and returned FALSE. 
-			}	
+		if (!file_exists("files" . $submission["filename"]) 							// if there is no file with that name already
+			&& move_uploaded_file($tmp_file_name, "files/" . $submission["filename"])) 	// then move_uploaded_file (&& skips the second test if the first one fails)
+		{
+			return TRUE;		
+		}
+		else
+		{
+			return FALSE;		//OLDMAN: to where? - is this meant to always return false, or does it need a condition? Is an else implied automatically? (probably being totallly thick about the syntax here!)
+									//CHARLEY: I have re-written it to make more sense. Originally if it didn't get to return TRUE then it carried on and returned FALSE. 
+		}	
 	}									
 
 	

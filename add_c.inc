@@ -1,4 +1,23 @@
 <?php
+
+//OLDMAN: A little confused about the structure here, does it mattter what order these functions go in?
+	//CHARLEY: No. It kicks off on the first call to process_form() which then calls the other functions. 
+	// Maybe it would be easier to read if I put more of the logic inside of the first 'if' block.  
+
+	
+// It seems to me like it should go check_captcha(), check_file(), process_form(),your first if statement, submit_form_to_database(),store_submitted_file() 
+// It must be late, because  what I just said was totally fucktarded. I take it that just like in java you are only declaring methoods here, 
+// and instantiating / calling them at some other point.   
+	//CHARLEY: Yes, I'm just declaring the functions. The program doesn't mind what order they are in, but it would be nicer for humans if they were in the order that they will be called. 
+
+// I think it looks pretty good. one or two inline comments below, but probably mostly syntax confusions on my part 
+// MAYBE if the project was any bigger you might have really tight resriction on method calls etc, so all the database access functionallity 
+// is wrapped within a dbAccess class, no processing occurs in views etc (im pretty sure this is what you have done anyway, but without a better handle on php I'm a little confuzzled!)
+// soz i couldnt be more help, good luck : )  
+	//CHARLEY: I would like to do that. I copied the structure from 
+	// http://toys.lerdorf.com/archives/38-The-no-framework-PHP-MVC-framework.html
+	// He uses a class called db, but I couldn't figure it out so I wrote my own. 
+
 	/**
 	 * @file Controller code for add.php image upload form
 	 */
@@ -27,7 +46,7 @@
 		}
 		else
 		{
-			$message .= "You lose. <br />";
+			$message .= "You lose. <br />";			//OLDMAN: I love it
 		}
 	}
 
@@ -47,7 +66,8 @@
 		if($check_captcha && $check_file)   
 		{
 			// first store_submitted_file(), then if that is successful then submit_form_to_database()
-			if (store_submitted_file()) 
+			if (store_submitted_file()) 	//OLDMAN: syntax newb again. Is if(store_submitted_file == true) implied automatically here? as in you dont need to code '==true' into it? 
+												//CHARLEY: This could be written as if(store_submitted_file() == TRUE).  
 			{
 				$query_id = submit_form_to_database();
 				return $query_id;
@@ -88,25 +108,37 @@
 	function check_file(){
 		global $message;
 		global $submission;
+
 		
-		krumo(getimagesize($_FILES["file"]["tmp_name"]));
-		$image_info = getimagesize($_FILES["file"]["tmp_name"]);
-		$valid_image_type = TRUE;
-		switch($image_info['mime'])
+		// If the file  was uploaded succesfully, run some checks on it to determine the filetype 
+		if($_FILES["file"]["error"] == 0 && !empty($_FILES["file"]["tmp_name"]))
 		{
-			case 'image/png':
-				$submission['file_extension'] = '.png';
-				break;
-			case 'image/gif':
-				$submission['file_extension'] = '.gif';
-				break;
-			case 'image/jpeg':
-				$submission['file_extension'] = '.jpg';
-			case 'image/pjpeg':
-				$submission['file_extension'] = '.jpg';
-			default:
-				$valid_image_type = FALSE;
+
+			$image_info = getimagesize($_FILES["file"]["tmp_name"]);
+			$valid_image_type = FALSE;
+			switch($image_info['mime'])
+			{
+				case 'image/png':
+					$submission['file_extension'] = '.png';
+					$valid_image_type = TRUE;
+					break;
+				case 'image/gif':
+					$submission['file_extension'] = '.gif';
+					$valid_image_type = TRUE;
+					break;
+				case 'image/jpeg':
+					$submission['file_extension'] = '.jpg';
+					$valid_image_type = TRUE;
+					break;
+				case 'image/pjpeg':
+					$submission['file_extension'] = '.jpg';
+					$valid_image_type = TRUE;
+					break;
+				default:
+					$valid_image_type = FALSE;
+			}
 		}
+
 		
 		
 		// File should be gif, jpeg or progressive jpeg, smaller than 2mb
@@ -132,20 +164,24 @@
 		// Get the location of our uploaded file.
 		$tmp_file_name = $_FILES["file"]["tmp_name"];
 
-		// Remove '/tmp/' from $tmp_file_name and append .jpg 
-		// (we can only deal with jpg files for now)
+		// Remove '/tmp/' from $tmp_file_name 
 		global $submission;
-		$submission["filename"] = substr($tmp_file_name, 5) . $submission['file_extension'];
+		$submission["filename"] = substr($tmp_file_name, 5);
+		// append the correct file extension (.jpg, .png, .gif)
+		$submission["filename"] .= $submission['file_extension'];
 		
 		// Don't overwrite existing files with the same name 
-		if (!file_exists("files" . $submission["filename"])){
-			if (move_uploaded_file($tmp_file_name, "files/" . $submission["filename"])) 
+		if ( !file_exists("files" . $submission["filename"]) // if there is no file with that name already
+		&& move_uploaded_file($tmp_file_name, "files/" . $submission["filename"])) // then move_uploaded_file (&& skips the second test if the first one fails)
 			{
-				return TRUE;
+				return TRUE;		//OLDMAN: to where? (probably being totallly thick about the syntax here!)
 			}
-		}
-		return FALSE;
-	}		
+			else
+			{
+				return FALSE;		//OLDMAN: to where? - is this meant to always return false, or does it need a condition? Is an else implied automatically? (probably being totallly thick about the syntax here!)
+										//CHARLEY: I have re-written it to make more sense. Originally if it didn't get to return TRUE then it carried on and returned FALSE. 
+			}	
+	}									
 
 	
 	/**

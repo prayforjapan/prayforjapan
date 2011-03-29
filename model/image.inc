@@ -80,7 +80,7 @@
 		$select_images['total_pages'] = (int) ceil($select_images['number_of_rows'] / $select_images['rows_per_page']);		
 		
 		// Check that $page is a valid page number
-		if(!is_numeric($page) || $page < 1 || $page > $select_images['total_pages'])
+		if($page > $select_images['total_pages'])
 		{
 			disconnect();
 			return FALSE;
@@ -89,6 +89,7 @@
 		$offset = ($page -1) * $select_images['rows_per_page'];
 		$rows_per_page = $select_images['rows_per_page'];
 		$query = "SELECT * FROM picture 
+					ORDER BY picture_id DESC
 					LIMIT 	$offset, $rows_per_page";
 		
 		$result = mysql_query($query) or die("Query failed: " . mysql_error());

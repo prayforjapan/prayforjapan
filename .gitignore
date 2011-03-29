@@ -2,3 +2,4 @@ files/*
 libs/krumo
 *.swo
 *.swp
+libs/timthumb.php

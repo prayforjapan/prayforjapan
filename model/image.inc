@@ -21,7 +21,7 @@
 			'" . $item['description'] . "' , 
 			'" . $item['filename'] . "',
 			now(),
-			'1'
+			'0'
 			)";
 		// Connect to the database
 		connect();
@@ -66,31 +66,44 @@
 		// Connect to the database
 		connect();
 		$select_images = array();
-		$select_images['rows_per_page'] = 10;
+		$select_images['rows_per_page'] = 9;
 		
 		// Prepare the database query
-		$query = "SELECT COUNT(*) FROM picture";
+		$query = "SELECT COUNT(*) FROM picture WHERE moderate = 0"; //WHERE moderate = 0
 
 		// Run the database query
 		$result_resource = mysql_query($query) or die("Query failed: " . mysql_error());
 
 		// Put the query result in to an array
 		$result = mysql_fetch_row($result_resource);
-		$select_images['number_of_rows'] = $result[0];
-		$select_images['total_pages'] = (int) ceil($select_images['number_of_rows'] / $select_images['rows_per_page']);		
+		$select_images['number_of_rows'] = (int) $result[0];
+		$select_images['total_pages'] = (int) ceil($select_images['number_of_rows'] / $select_images['rows_per_page']);	
+		$select_images['current_page'] = $page;
 		
-		// Check that $page is a valid page number
-		if($page > $select_images['total_pages'])
+
+				
+		if ($select_images['number_of_rows'] == 0)
 		{
 			disconnect();
+			global $message;
+			$message .= "There are no approved photos. Be the first to <a href=\"/add.php\">upload a photo</a>!<br />";
+			return FALSE;
+		}
+		// Check that $page is a valid page number
+		if( $page > $select_images['total_pages'])
+		{
+			disconnect();
+			global $message;
+			$message .= "Invalid request<br />";
 			return FALSE;
 		}
 		
 		$offset = ($page -1) * $select_images['rows_per_page'];
 		$rows_per_page = $select_images['rows_per_page'];
 		$query = "SELECT * FROM picture 
+					WHERE moderate = 0 
 					ORDER BY picture_id DESC
-					LIMIT 	$offset, $rows_per_page";
+					LIMIT 	$offset, $rows_per_page"; //	WHERE moderate = 0 
 		
 		$result = mysql_query($query) or die("Query failed: " . mysql_error());
 		

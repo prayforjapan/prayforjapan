@@ -1,22 +1,27 @@
 <?php
 	include './ui.inc';		// Common View Helper functions
 	include './add_c.inc'; 	// Controller
-	head();
+	head("Pray For Japan");
 ?>
-	<p><strong><?php echo $message; // Prints messages about whether the submission of the form was successful ?></strong></p>
+	<div id="submit_photo">
 	<form action="add.php" method="post" enctype="multipart/form-data">
-		<p><label for="file">Upload a picture </label>
-		<input type="file" name="file" id="file" /><br /> 
-		(jpeg, gif or png image smaller than 2 megabytes)</p>
-		<label for="description">Description: </label>
-		<input type="text" name="description" /><br />
-		<br />
-		<?php
-			captchaform(); 
-		?>
-		<p><input type="submit" value="submit" />
+		<div id="upload_1">
+			<img src="images/upload-01.jpg" alt="1 Upload your image" /><br />
+			<input type="file" name="file" id="file" class="button" /><br /> 
+			(jpeg, gif or png image smaller than 2 megabytes)
+		</div>
+		<div id="upload_2">
+			<img src="images/upload-02.jpg" alt="2 Enter description" /><br />
+			<label for="description">Description: </label>
+			<input type="text" name="description" /><br />
+		</div>
+		<div id="upload_3">
+			<img src="images/upload-03.jpg" alt="3 Submit" /> 
+			<?php captchaform(); ?>
+			<input type="submit" value="submit" class="button" />
+		</div>
 		</form>
-	
+	</div><!-- #submit_photo -->
 <?php 
 	foot();
 ?>

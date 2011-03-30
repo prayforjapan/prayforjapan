@@ -39,6 +39,8 @@
 			// Get the appropriate image from the database and populate variables for the view
 			global $image; 
 			$image = select_image($_GET["image"]);
+
+
 			if ($image)
 			{
 				$request_succeeded = TRUE;
@@ -49,9 +51,9 @@
 			}
 		
 			// Provide a short (240 character) version of description
-			if (strlen($image['description']) > 80)
+			if (mb_strlen($image['description'], 'UTF-8') > 80)
 			{
-				$image['short_description'] = substr($image['description'], 0, 79);
+				$image['short_description'] = mb_substr($image['description'], 0, 79, 'UTF-8');
 			}
 			else
 			{
@@ -60,10 +62,11 @@
 			
 			$image['image_path'] = 'files/' . $image['filename'];
 			
-			
+			$image['date'] = $image['timestamp'];
 		
 		}
-				
+			
+		
 		// If select_image returned a value, we were successful, 
 		// If it returned FALSE, we failed to process the request. 
 		return $request_succeeded;

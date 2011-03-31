@@ -64,7 +64,7 @@
 					</ul>
 					<h4>Contact</h4>
 					<ul>
-						<li><a href="mailto:hello@prayforjapan.org.uk">hello@prayforjapan.org.uk</a></li>
+						<li><a href="mailto:info@prayforjapan.org.uk">info@prayforjapan.org.uk</a></li>
 					</ul>
 					<h4>Site design/build</h4>
 					<ul>

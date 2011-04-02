@@ -40,6 +40,10 @@ em {
 	left: -240px; 
 	top: 0;
 	}	
+#head #facebook_like {
+	position: absolute; 
+	top: 5px;
+	}
 #head #buttons {
 	position: absolute;
 	right: 0; 
@@ -241,7 +245,7 @@ h1 {
 	border-bottom: 1px solid #cbcac5;
 	}
 #foot_inner{
-	
+	position: relative;
 	}
 #foot_content {
 	padding-left: 95px;
@@ -260,3 +264,9 @@ h1 {
 	color: #9c9793;
 	text-decoration: none;
 	}
+	
+#foot #play_for_japan {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+}

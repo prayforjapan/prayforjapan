@@ -10,16 +10,20 @@
 	 <head>
 		<title><?php echo $title; ?></title>
 		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-
+		<meta name="description" content="Upload images to show your love and support for Japan in the aftermath of the massive earthquake and resulting tsunami that struck on the 11th of march" />
 		<style type="text/css" media="screen">@import "styles.css";</style>
 	 </head>
 	 <body>
+	 
 	  <div id="page">
 		<div id="head">
 			<div id="head_inner">
 				<a href="/"><img src="images/header-image.jpg" alt="Pray For Japan" id="header_image" /></a>
+				<div id="facebook_like">
+					<script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:like href="www.prayforjapan.org.uk" show_faces="false" width="450" font="verdana"></fb:like>
+				</div><!-- #facebook_like -->
 				<div id="buttons">
-					<a href="http://www.redcross.org.uk/japantsunami"><img src="images/donate.jpg" alt="donate" id="donate" /></a>
+					<a href="http://www.japansociety.org.uk/earthquake/"><img src="images/donate.jpg" alt="donate" id="donate" /></a>
 					<a href="add.php"><img src="images/submit-a-photo.jpg" alt="Submit a photo" id="submit_a_photo" /></a>
 				</div><!-- #buttons -->
 			</div><!-- #header_inner -->
@@ -29,8 +33,8 @@
 				<img src="images/what-is-pray-for-japan.jpg" alt="What is Pray For Japan? Upload images to show your love and support for Japan in the aftermath of the massive earthquake and resulting tsunami that struck on the 11th of march" id="what_is_pfj" />
 				<div id="unshin">
 					<a href="http://www.facebook.com/pages/Pray-For-Japan/113675088711654"><img src="images/unshin.jpg" alt="Unshin" /></a>
-					<p id="watch_pfj">Watch '<a href="http://www.facebook.com/pages/Pray-For-Japan/113675088711654">Pray For Japan</a>'
-					Music Video by <strong>Megumi Miyoshi</strong>.</p>
+					<p id="watch_pfj">Listen to '<a href="http://www.facebook.com/pages/Pray-For-Japan/113675088711654">Pray For Japan</a>'
+					 by <strong>Megumi Miyoshi</strong>.</p>
 				</div><!-- unshin -->
 			</div><!-- #gray_bar_inner -->
 		</div><!-- #gray_bar -->
@@ -56,11 +60,11 @@
 				<div id="foot_content">
 					<h4>Links</h4>
 					<ul>
-						<li><a href="http://www.facebook.com/PlayPrayPay.A.Little.Something4JapanAid">Play For Japan Facebook group</a></li>
-						<li><a href="http://www.facebook.com/pages/Pray-for-Japan/153055688050960">Pray For Japan Facebook group</a></li>
-						<li><a href="http://www.facebook.com/pages/Pray-For-Japan/113675088711654?sk=app_178091127385">Pray For Japan song</a></li>
-						<li><a href="http://www.facebook.com/musicforjapan">Music For Japan Facebook group</a></li>
-						<li><a href="http://www.redcross.org.uk/japantsunami">Japan Tsunami Appeal</a></li>
+						<li><a href="http://www.nytimes.com/interactive/2011/03/12/world/asia/20110312_japan.html#1">New York Times Pictures</a></li>
+						<li><a href="http://www3.nhk.or.jp/news/">NHK News</a></li>
+						<li><a href="http://www3.nhk.or.jp/daily/english/">NHK News English</a></li>
+						<!--<li><a href="http://www.playforjapan.com">www.playforjapan.com</a></li>-->
+						<!--<li><a href="http://www.japansociety.org.uk/">www.japansociety.org.uk</a></li>-->
 					</ul>
 					<h4>Contact</h4>
 					<ul>
@@ -71,6 +75,9 @@
 						<li><a href="http://onehundredrivers.com">onehundredrivers.com</a></li>
 					</ul>
 				</div><!-- #foot_content -->
+				<a href="http://www.playforjapan.com" id="play_for_japan_link">
+					<img src="images/play-for-japan-logo.jpg" alt="Play For Japan" id="play_for_japan" />
+				</a>	
 			</div><!-- #foot_inner -->
 		</div><!-- #foot -->
 	  </div><!-- #page -->

@@ -12,6 +12,44 @@
 		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 		<meta name="description" content="Upload images to show your love and support for Japan in the aftermath of the massive earthquake and resulting tsunami that struck on the 11th of march" />
 		<style type="text/css" media="screen">@import "styles.css";</style>
+		<script src="js/swfobject.js" type="text/javascript" charset="utf-8"></script> 
+		<script src="js/nonverblaster.js" type="text/javascript" charset="utf-8"></script> 
+		<script type="text/javascript"> 
+			var flashvars = {};
+				flashvars.mediaURL = "media/pray_for_japan.mp3";
+				flashvars.allowSmoothing = "true";
+				flashvars.autoPlay = "false";
+				flashvars.buffer = "6";
+				flashvars.showTimecode = "false";
+				flashvars.loop = "false";
+				flashvars.controlColor = "0x000000";
+				flashvars.controlBackColor = "0x000000";
+				flashvars.scaleIfFullScreen = "true";
+				flashvars.defaultVolume = "100";
+				flashvars.showScalingButton = "true";
+				// just leave the following away, if you want the player to be transparent
+				// (params.wmode="transparent")
+				flashvars.playerBackColor = "0xFFFFFF";
+			
+			
+			var params = {};
+				params.menu = "false";
+				params.allowFullScreen = "true";
+				params.allowScriptAccess = "always";
+				params.wmode = "transparent";
+			
+			var attributes = {};
+				attributes.id = "nonverblaster";
+		
+			swfobject.embedSWF("NonverBlaster.swf", "audioPlayer", "150", "17", "9", "js/expressinstall.swf", flashvars, params, attributes);
+		
+			registerForJavaScriptCommunication("nonverblaster");
+		
+			// Uncomment this function if you want to listen for the end of playback
+			/*function computeEnd(){
+				alert("end reached!");
+			}*/
+		</script> 
 	 </head>
 	 <body>
 	 
@@ -31,11 +69,30 @@
 		<div id="gray_bar">
 			<div id="gray_bar_inner">
 				<img src="images/what-is-pray-for-japan.jpg" alt="What is Pray For Japan? Upload images to show your love and support for Japan in the aftermath of the massive earthquake and resulting tsunami that struck on the 11th of march" id="what_is_pfj" />
+				
+				
+				<!-- Pray For Japan song and video -->
 				<div id="unshin">
-					<a href="http://www.facebook.com/pages/Pray-For-Japan/113675088711654"><img src="images/unshin.jpg" alt="Unshin" /></a>
-					<p id="watch_pfj">Listen to '<a href="http://www.facebook.com/pages/Pray-For-Japan/113675088711654">Pray For Japan</a>'
-					 by <strong>Megumi Miyoshi</strong>.</p>
+					
+					<a href="http://prayforjapan.org.uk/song.php"><img src="images/unshin.jpg" alt="Watch Pray for Japan" id="watch"></a>
+					<p id="pfj">
+						<strong>Pray For Japan</strong><br />
+						by Megumi Miyoshi
+					</p>
+					<div id="song">
+						<div id="audioPlayer"> 
+							<a href="http://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash" target="_blank">Get Flash</a> and enable Javascript.
+						</div><!-- #audioPlayer -->
+						<div id="text"><strong>Buy to support from:</strong><br />
+						
+						<a href="http://www.amazon.co.uk/Pray-For-Japan/dp/B004UIVW00">Amazon</a> |
+						<a href="http://prayforjapan.org.uk/song.php">Info</a>
+						</div>
+					</div><!-- #song -->
+						
+					
 				</div><!-- unshin -->
+				
 			</div><!-- #gray_bar_inner -->
 		</div><!-- #gray_bar -->
 		<div id="main_content">

@@ -71,6 +71,7 @@ em {
 	}
 	
 #unshin {
+	height: 105px;
 	position: absolute; 
 	left: 620px;
 	top: 0;
@@ -81,6 +82,11 @@ em {
 	margin-left: 10px;
 	width: 300px;
 	}
+#unshin #watch {
+	position: relative;
+	top: 7px;
+	left: -2px;
+}
 #unshin img{
 	float: left;
 	}
@@ -94,7 +100,32 @@ em {
 #unshin a {
 	color: #ebebeb;
 }	
-
+	p#pfj {
+		position: absolute;
+		left: 145px;
+		color: #4c4741;
+	}
+	#pfj strong{
+		color: white;
+	}
+#unshin #song {
+	width: 150px;
+	height: 42px;
+	padding: 7px;
+	padding-bottom: 10px;
+	background-image: url('images/song.jpg');
+	position: absolute; 
+	bottom: 5px;
+	right: 7px;
+	}
+	#song #text{
+	color: #f80100;
+	}
+	#song a{
+	color: #f80100;
+	}
+	
+	
 h1 {
 	display: none;
 	}

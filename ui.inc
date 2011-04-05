@@ -68,8 +68,10 @@
 		</div><!-- #header" -->
 		<div id="gray_bar">
 			<div id="gray_bar_inner">
-				<img src="images/what-is-pray-for-japan.jpg" alt="What is Pray For Japan? Upload images to show your love and support for Japan in the aftermath of the massive earthquake and resulting tsunami that struck on the 11th of march" id="what_is_pfj" />
-				
+				<span 	onmouseover="document.what_is_pfj.src='images/what-is-pray-for-japan-japanese.jpg'"
+						onmouseout="document.what_is_pfj.src='images/what-is-pray-for-japan.jpg'">
+							<img src="images/what-is-pray-for-japan.jpg" alt="What is Pray For Japan? Upload images to show your love and support for Japan in the aftermath of the massive earthquake and resulting tsunami that struck on the 11th of march" id="what_is_pfj" name="what_is_pfj" />
+				</span>
 				
 				<!-- Pray For Japan song and video -->
 				<div id="unshin">
@@ -84,7 +86,7 @@
 							<a href="http://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash" target="_blank">Get Flash</a> and enable Javascript.
 						</div><!-- #audioPlayer -->
 						<div id="text"><strong>Buy to support from:</strong><br />
-						
+						<a href="http://itunes.apple.com/gb/album/pray-for-japan-single/id429494920?uo=4">iTunes</a> | 
 						<a href="http://www.amazon.co.uk/Pray-For-Japan/dp/B004UIVW00">Amazon</a> |
 						<a href="http://prayforjapan.org.uk/song.php">Info</a>
 						</div>

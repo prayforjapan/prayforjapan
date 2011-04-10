@@ -76,7 +76,7 @@
 				<!-- Pray For Japan song and video -->
 				<div id="unshin">
 					
-					<a href="http://prayforjapan.org.uk/song.php"><img src="images/unshin.jpg" alt="Watch Pray for Japan" id="watch"></a>
+					<a href="http://prayforjapan.org.uk/song.php"><img src="images/watch-pray-for-japan.jpg" alt="Watch Pray for Japan" id="watch"></a>
 					<p id="pfj">
 						<strong>Pray For Japan</strong><br />
 						by Megumi Miyoshi

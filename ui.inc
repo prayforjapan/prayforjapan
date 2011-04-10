@@ -61,7 +61,7 @@
 					<script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:like href="www.prayforjapan.org.uk" show_faces="false" width="450" font="verdana"></fb:like>
 				</div><!-- #facebook_like -->
 				<div id="buttons">
-					<a href="http://www.japansociety.org.uk/earthquake/"><img src="images/donate.jpg" alt="donate" id="donate" /></a>
+					<a href="http://www.japansociety.org.uk/earthquake/" target="_blank"><img src="images/donate.jpg" alt="donate" id="donate" /></a>
 					<a href="add.php"><img src="images/submit-a-photo.jpg" alt="Submit a photo" id="submit_a_photo" /></a>
 				</div><!-- #buttons -->
 			</div><!-- #header_inner -->
@@ -86,8 +86,8 @@
 							<a href="http://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash" target="_blank">Get Flash</a> and enable Javascript.
 						</div><!-- #audioPlayer -->
 						<div id="text"><strong>Buy to support from:</strong><br />
-						<a href="http://itunes.apple.com/gb/album/pray-for-japan-single/id429494920?uo=4">iTunes</a> | 
-						<a href="http://www.amazon.co.uk/Pray-For-Japan/dp/B004UIVW00">Amazon</a> |
+						<a href="http://itunes.apple.com/gb/album/pray-for-japan-single/id429494920?uo=4" target="_blank">iTunes</a> | 
+						<a href="http://www.amazon.co.uk/Pray-For-Japan/dp/B004UIVW00" target="_blank">Amazon</a> |
 						<a href="http://prayforjapan.org.uk/song.php">Info</a>
 						</div>
 					</div><!-- #song -->
@@ -119,11 +119,11 @@
 				<div id="foot_content">
 					<h4>Links</h4>
 					<ul>
-						<li><a href="http://www.nytimes.com/interactive/2011/03/12/world/asia/20110312_japan.html#1">New York Times Pictures</a></li>
-						<li><a href="http://www3.nhk.or.jp/news/">NHK News</a></li>
-						<li><a href="http://www3.nhk.or.jp/daily/english/">NHK News English</a></li>
-						<!--<li><a href="http://www.playforjapan.com">www.playforjapan.com</a></li>-->
-						<!--<li><a href="http://www.japansociety.org.uk/">www.japansociety.org.uk</a></li>-->
+						<li><a href="http://www.nytimes.com/interactive/2011/03/12/world/asia/20110312_japan.html#1" target="_blank">New York Times Pictures</a></li>
+						<li><a href="http://www3.nhk.or.jp/news/" target="_blank">NHK News</a></li>
+						<li><a href="http://www3.nhk.or.jp/daily/english/" target="_blank">NHK News English</a></li>
+						<!--<li><a href="http://www.playforjapan.com" target="_blank">www.playforjapan.com</a></li>-->
+						<!--<li><a href="http://www.japansociety.org.uk/" target="_blank">www.japansociety.org.uk</a></li>-->
 					</ul>
 					<h4>Contact</h4>
 					<ul>
@@ -131,10 +131,10 @@
 					</ul>
 					<h4>Site design/build</h4>
 					<ul>
-						<li><a href="http://onehundredrivers.com">onehundredrivers.com</a></li>
+						<li><a href="http://onehundredrivers.com" target="_blank">onehundredrivers.com</a></li>
 					</ul>
 				</div><!-- #foot_content -->
-				<a href="http://www.playforjapan.com" id="play_for_japan_link">
+				<a href="http://www.playforjapan.com" id="play_for_japan_link" target="_blank">
 					<img src="images/play-for-japan-logo.jpg" alt="Play For Japan" id="play_for_japan" />
 				</a>	
 			</div><!-- #foot_inner -->
